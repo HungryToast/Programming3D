@@ -7,12 +7,12 @@ using UnityEngine.UIElements;
 public class PickUpController : MonoBehaviour
 {
    [SerializeField] Rigidbody rb;
-   [SerializeField] CapsuleCollider col;
+   [SerializeField] BoxCollider col;
 
    private void Awake()
    {
       rb = GetComponent<Rigidbody>();
-      col = GetComponent<CapsuleCollider>();
+      col = GetComponent<BoxCollider>();
    }
 
    private void Start()
