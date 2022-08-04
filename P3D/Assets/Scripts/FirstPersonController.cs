@@ -77,6 +77,8 @@ namespace StarterAssets
         // Private audio variables
         private float nextStep = 0.0f;
         private AudioSource audioSource;
+        [SerializeField]private AudioClip jumpAudioClip;
+        [SerializeField] AudioClip landAudioClip;
 
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -237,22 +239,30 @@ namespace StarterAssets
 			}
 		}
 
-			private void JumpAndGravity()
+		
+		
+		
+
+		private void JumpAndGravity()
 		{
 			if (Grounded)
 			{
+				
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
 
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
 				{
+					
 					_verticalVelocity = -2f;
 				}
 
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
+					audioSource.clip = jumpAudioClip;
+					audioSource.PlayOneShot(audioSource.clip);
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				}
