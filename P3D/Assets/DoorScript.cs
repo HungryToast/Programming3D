@@ -11,7 +11,7 @@ public class DoorScript : MonoBehaviour
     {
         doorState = true;
         print("Open");
-        transform.rotation = new Quaternion(0, 90, 0, 0);
+        transform.rotation = new Quaternion(0,  90, 0, 0);
     }
 
     public void CloseDoor()
